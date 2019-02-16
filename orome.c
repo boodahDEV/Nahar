@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <conio.h>
 void CREDENCIALES(char *);
 
 struct data_1 {
@@ -11,7 +12,7 @@ struct data_1 {
   float monto_comida;
   float salario;
   float pagos_obligados[5]; // siendo [0]=agua, [1]=luz, [2]=internet
-}*d;
+}data_1;
 
 int main(int argc, char const *argv[]) {
 
@@ -29,14 +30,25 @@ switch (strcmp(u_name,"farauz")) {
   default:
       switch (strcmp(u_name, "admin")) {
         case 0: {
-          //CREDENCIALES(u_name);
+          char resp;
+          //CREDENCIALES(u_name)
           system("cls"); // EN VERSIONES UNIX TRABAJAR COMO UNA FUNCION
-          printf("Este modo tiene los roles necesarios para la carga inicial de los datos principales \nAprobado por: @boodah, %chttps://github.com/boodahDEV. Solicita tu extraccion o fork.\n\n\n\n\n",184);
+          printf("Gasto principal (deposito inicial): "); scanf("%f",&data_1.monto_inicial);
+          printf("Es %.2f el dato correcto ingresado? s/n ",data_1.monto_inicial); resp = getch();
 
 
+          while(resp == 'n' || resp == 'N'){
+            data_1.monto_inicial =0.00;system("cls");
+            printf(" ** Gasto principal (deposito inicial): "); scanf("%f",&data_1.monto_inicial);
+            printf(" ** Es %.2f el dato correcto ingresado? s/n ",data_1.monto_inicial);
+            resp = getch();
+          } // endif
+
+
+          printf("Gasto mensual del cuarto: "); scanf("%f",&data_1.monto_mensual_cuarto);
           /* code */
           break;
-        }
+        }// end switch admin
         default:
           switch (strcmp(u_name, "bjimenez")) {
             case 0: {
