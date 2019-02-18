@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <conio.h>
+#include <curses.h>
 void CREDENCIALES(char *);
 
 struct data_1 {
+  char user[10];
   float deudas[10]; //
   float monto_inicial;
   float monto_mensual_cuarto;
@@ -34,18 +35,23 @@ switch (strcmp(u_name,"farauz")) {
           //CREDENCIALES(u_name)
           system("cls"); // EN VERSIONES UNIX TRABAJAR COMO UNA FUNCION
           printf("Gasto principal (deposito inicial): "); scanf("%f",&data_1.monto_inicial);
-          printf("Es %.2f el dato correcto ingresado? s/n ",data_1.monto_inicial); resp = getch();
+          printf("\nEs %.2f el dato correcto ingresado? s/n ",data_1.monto_inicial); resp = getch();
 
 
           while(resp == 'n' || resp == 'N'){
             data_1.monto_inicial =0.00;system("cls");
             printf(" ** Gasto principal (deposito inicial): "); scanf("%f",&data_1.monto_inicial);
-            printf(" ** Es %.2f el dato correcto ingresado? s/n ",data_1.monto_inicial);
-            resp = getch();
+            printf("\n ** Es %.2f el dato correcto ingresado? s/n ",data_1.monto_inicial);
+            resp =  getch();
           } // endif
 
+          printf("\nEspesifique el usuario para la configuracion: "); scanf("%s",data_1.user);
+          printf("\nPago mensual del cuarto: "); scanf("%f",&data_1.monto_mensual_cuarto);
+          printf("\nPago quincenal del cuarto: "); scanf("%f",&data_1.monto_quincenal_cuarto);
+          printf("\nPago quincenal en pago de comida: "); scanf("%f",&data_1.monto_comida);
+          //printf("\n", );
+          printf("\nSalario base generado por quincena: "); scanf("%f",&data_1.salario);
 
-          printf("Gasto mensual del cuarto: "); scanf("%f",&data_1.monto_mensual_cuarto);
           /* code */
           break;
         }// end switch admin
