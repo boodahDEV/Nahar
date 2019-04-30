@@ -6,6 +6,7 @@
 #define KGRN  "\x1B[32m"
 #define KNRM  "\x1B[0m"
 #define KYEL  "\x1B[33m"
+#define KRED  "\x1B[31m"
 
 struct data{
     char *nom_act;
@@ -17,13 +18,14 @@ struct data{
 }d;
 
 char *carga_memo_char(char *, int);
+char *verifica(char *);
 void carga_data();
 
 int main(int argc, char const *argv[])
 {
     char pass[4];int des=0;char *temp=carga_memo_char(temp,200);
     system("clear");
-    printf("Contrasena: ");printf(KGRN);scanf("%[^\n]",pass);printf(KNRM);
+    printf("Pass: ");printf(KGRN);scanf("%[^\n]",pass);printf(KNRM);
         
     if(strcmp(pass,"1q2w")==0){
         system("clear");
@@ -35,10 +37,13 @@ int main(int argc, char const *argv[])
             usleep(20000);
         }
         printf("\n\n\n");
+        system("make clean");
+
         //aqui debe ir metodos de apertura de archivo.
 
         d.nom_act=carga_memo_char(d.nom_act,60);
         //VALIDAR QUE NINGUN CAMPO SEA NULL o SIN VALOR 
+    printf("\n%sEl nombre de la actividad debe tener como maximo un total de 60 caracteres. %sEsto como obligatorio.%s\n",KYEL,KRED,KNRM);
         printf("Nombre de la actividad: ");printf(KGRN);scanf("%s",d.nom_act);printf(KNRM);
         fflush( stdin );
         printf("Desea agregar una descripcion? 0/1 =  ");printf(KGRN);scanf("%d",&des);printf(KNRM);
@@ -82,4 +87,7 @@ int main(int argc, char const *argv[])
 char *carga_memo_char(char *a, int b){
     a =(char *)malloc(b*sizeof(char)); 
     return a;
+}
+char * verifica(char *a){
+
 }
