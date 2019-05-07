@@ -4,4 +4,4 @@ main: main.c
 
 .PHONY: clean
 clean:
-	rm -rf init
+	rm -r init
